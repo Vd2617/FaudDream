@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewData["Title"] = "Создать компанию";
+}
+<br>
+<br>
+<br>
+<div class=" container p-3 m-3">
+    <div clas="row">
+
+        <h1 class="text-center"><strong>Форма создание компании</strong></h1>
+
+    </div>
+    <div class="row text-center">
+        <div class="col-6">
+            <div class="form-group">
+                <br />
+                <label for="name">Название компании:</label>
+                <textarea class="form-control" rows="2" id="name"></textarea>
+                <br />
+                <label for="name1">Описание компании:</label>
+                <textarea class="form-control" rows="2" id="name1"></textarea>
+                <br />
+                <label for="name2">Бонусы:</label>
+                <textarea class="form-control" rows="2" id="name2"></textarea>
+                <br />
+                <label for="name3">Нужная сумма (USD) :</label>
+                <textarea class="form-control" rows="2" id="name3"></textarea>
+                <br />
+
+                <label for="sel1">Тематика:</label>
+                <select class="form-control" id="sel1">
+                    <option>Исскуство</option>
+                    <option>Музыка</option>
+                    <option>Кино</option>
+
+                </select>
+                <br />
+                <label>Основное фото компании:</label>
+                <br />
+                @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <input type="file" name="upload" class="btn btn-outline-success"/><br><br />
+                    <input type="submit" value="Загрузить" class="btn btn-outline-success"/>
+                }
+                <br />
+                <br />
+                <label>Видео для компании(ссылка на Youtube):</label>
+                <br />
+                @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <input type="file" name="upload" class="btn btn-outline-success" /><br><br />
+                    <input type="submit" value="Загрузить" class="btn btn-outline-success" />
+                }
+                <br />
+                <button type="button" id="save" class="btn btn-success">Готово</button>
+                <button type="button" id="view" class="btn btn-success">Предпросмотр</button>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+    
+
+
+
+
+
+

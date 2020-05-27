@@ -8,15 +8,15 @@ namespace WebFundDream.Models
 {
     public class Comment
     {
-        String text;
+        public String text;
 
-        String author;
+        public String author;
         
-        uint like;
+        public uint like;
         
-        uint dislike;
+        public uint dislike;
         
-        DateTime commentDate;
+        public DateTime commentDate;
 
 
         public Comment(string author,string text) {
@@ -35,6 +35,7 @@ namespace WebFundDream.Models
             
 
         }
+       
         public Comment() { 
         }
 
