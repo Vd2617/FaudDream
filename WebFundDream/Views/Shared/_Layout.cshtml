@@ -7,18 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]FundDream</title>
     <link rel="stylesheet" href="~/css/site.css" />
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" href="~/favicon.png" type="image/png">
-
-
+    <script src="~/js/site.js"></script>
 
 </head>
 
@@ -34,17 +23,22 @@
             <div class="collapse navbar-collapse " id="navbarResponsive">
                 <ul class="navbar-nav mr-auto ">
                     <li class="nav-item-active">
-                        <a href="#" class="nav-link text-white">Main</a>
+                        <a href="#" class="nav-link text-white">Создать проект</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-white">Main</a>
+                    
+                   
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white"  href="#" id="navbardrop" data-toggle="dropdown">
+                            Проекты
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Все проекты </a>
+                            <a class="dropdown-item" href="#">Последние обновленные </a>
+                            <a class="dropdown-item" href="#">Близкие к завершению </a>
+                        </div>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-white">Main</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-white">About</a>
-                    </li>
+
                     <li class="nav-item">
                         <a href="@Url.Action("Login", "Home")" class="nav-link text-white">Login</a>
                     </li>
@@ -66,6 +60,59 @@
 
 
     @RenderBody()
+    <br>
+    <!--scrol-->
+
+    <div class="scrollup">
+        <!-- Иконка fa-chevron-up (Font Awesome) -->
+        <i class="fa fa-chevron-up"></i>
+    </div>
+    <style>
+        /*scrol-up*/
+        div.scrollup {
+            position: fixed; /* фиксированная позиция */
+            color: #fff; /* цвет текста */
+            background-color: #3b676a; /* цвет заднего фона */
+            right: 20px; /* расстояние от правого края */
+            bottom: 40px; /* расстояние от нижнего края */
+            padding: 4px 10px; /* отступы до содержимого блока */
+            font-size: 20px; /* размер шрифта (иконки) */
+            border-top-left-radius: 4px; /* скругление верхнего левого угла */
+            border-top-right-radius: 4px; /* скругление верхнего правого угла */
+        }
+
+            div.scrollup:hover {
+                background-color: #32CD32; /* цвет заднего фона при наведении */
+            }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        //scroling
+        $(function () {
+            // при нажатии на кнопку scrollup
+            $('.scrollup').click(function () {
+                // переместиться в верхнюю часть страницы
+                $("html, body").animate({
+                    scrollTop: 0
+                }, 1000);
+            })
+        })
+        // при прокрутке окна (window)
+        $(window).scroll(function () {
+            // если пользователь прокрутил страницу более чем на 200px
+            if ($(this).scrollTop() > 200) {
+                // то сделать кнопку scrollup видимой
+                $('.scrollup').fadeIn();
+            }
+            // иначе скрыть кнопку scrollup
+            else {
+                $('.scrollup').fadeOut();
+            }
+        });
+    </script>
+
+
 
     <!-- Footer -->
     <section id="footer">
@@ -74,18 +121,17 @@
                 <div class="col-xs-12 col-sm-4 col-md-4">
                     <h5>Quick links</h5>
                     <ul class="list-unstyled quick-links">
-                        <li><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-angle-double-right"></i>Home</a></li>
-                        <li><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-angle-double-right"></i>About</a></li>
-                        <li><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-                        <li><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
-                        <li><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-angle-double-right"></i>Videos</a></li>
+                        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-double-right"></i>Домашняя</a></li>
+                        <li><a href="#"><i class="fa fa-angle-double-right"></i>Проекты</a></li>
+                        <li><a href=" @Url.Action("About","About")"><i class="fa fa-angle-double-right"></i>О платформе</a></li>
+
                     </ul>
                 </div>
-                </div>
-               
+            </div>
+
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
-                    
+
                     <p class="h6">© All right Reversed.<a class="text-green ml-2" href="" target="_blank">FaudDream</a></p>
                 </div>
                 <hr>
@@ -93,6 +139,20 @@
         </div>
     </section>
     <!-- ./Footer -->
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="~/favicon.png" type="image/png">
 </body>
 
 </html>
