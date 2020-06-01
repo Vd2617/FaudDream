@@ -46,6 +46,10 @@ namespace WebFundDream.Models
             
             this.datestart = DateTime.Now;
 
+            commentsJson = "";
+            
+            top = 0;
+
          }
 
        
@@ -77,6 +81,7 @@ namespace WebFundDream.Models
         
         public String Videopath { get => videopath; set => videopath = value; }
         public int Id { get => Id; set => Id = value; }
+       
 
         public List<Comment> CommentsJsonDeserialized() {
             return JsonSerializer.Deserialize<List<Comment>>(this.commentsJson);
